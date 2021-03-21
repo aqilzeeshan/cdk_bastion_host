@@ -56,6 +56,44 @@ export class CdkBastionStack extends cdk.Stack {
       //install cli plugin from http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found
       //connect using ssm 
       //aws ssm start-session --target i-0524b461bfdcf821f --region=us-east-1
+
+      /**
+       * ////////////////////////////////////////////////////////////////////////////////////////
+       * Create Webserver in Public Subnet
+       */
+
+      const webserverSecurityGroup = new ec2.SecurityGroup(this,"SecurityGroup",{
+        vpc:vpc,
+        description:"SecurityGroup from CDK",
+        securityGroupName:"CDK SecurityGroup",
+        allowAllOutbound:true
+      })
+      //Allow ssh from VPC
+      webserverSecurityGroup.addIngressRule(ec2.Peer.ipv4('10.0.0.0/16'),ec2.Port.tcp(22),"Allow ssh access from the VPC")
+      //Allow ssh from anywhere in the world
+      //mySecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(22), 'allow ssh access from the world');
+      
+      //allow requests from any IP to port 80
+      webserverSecurityGroup.addIngressRule(
+        ec2.Peer.anyIpv4(), 
+        ec2.Port.tcp(80), 
+        'allow ingress http traffic'                                                                                                                                                     
+      )
+
+
+      //as per https://github.com/aws/aws-cdk/issues/12848
+      const subnetSelection : ec2.SubnetSelection = {
+        subnetType:ec2.SubnetType.PUBLIC
+      };
+
+      //setup web instance in public subnet
+      const webServer = new ec2.Instance(this, "WebInstance",{
+        instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO),
+        machineImage: new ec2.AmazonLinuxImage(),
+        vpc: vpc,
+        securityGroup:webserverSecurityGroup,
+        vpcSubnets:subnetSelection
+      })
     
   }
 }
