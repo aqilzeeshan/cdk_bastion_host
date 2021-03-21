@@ -53,6 +53,8 @@ export class CdkBastionStack extends cdk.Stack {
 
       new cdk.CfnOutput(this, 'InstanceID', { value: host_bastion.instanceId });
 
+      //install cli plugin from http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found
+      //connect using ssm 
       //aws ssm start-session --target i-0524b461bfdcf821f --region=us-east-1
     
   }
