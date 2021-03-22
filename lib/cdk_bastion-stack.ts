@@ -149,8 +149,10 @@ export class CdkBastionStack extends cdk.Stack {
         keyName:'JenkinsCF',
         minCapacity: 1,
         maxCapacity: 3,
+        //IP address for instances are so one can ssh and run stress test///// 
         associatePublicIpAddress:true,
         vpcSubnets:subnetSelection,
+        //////////////////////////////////////////////////////////////////////
       });
 
       const lb = new elbv2.ApplicationLoadBalancer(this, 'LB', {
