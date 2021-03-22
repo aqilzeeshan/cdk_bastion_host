@@ -26,3 +26,4 @@ change for windows
 
 It returns
 `ami-056db1277deef2218`
+* shows how to test it by using stress utility. Run `stress -c 50` to do it.
