@@ -5,8 +5,9 @@
 * Shows how to create VPC endpoints to make AWS Services connect to VPC
 * Good article `https://mechanicalrock.github.io/2020/07/20/private-bastions.html` and `https://medium.com/faun/create-a-bastion-with-aws-cdk-d5ebfb91aef9`
 * For further todo `https://github.com/aws-samples/aws-cdk-examples/blob/c985b879fbed067e615af9c7ee257ef54d939c14/python/ec2-cloudwatch/ec2_cloudwatch/ec2_cloudwatch_stack.py`
-# Autoscaling Group
-* This is based on `https://levelup.gitconnected.com/implementing-and-testing-aws-ec2-auto-scaling-13db17be1161` and `https://github.com/aws-samples/aws-cdk-examples/blob/master/typescript/application-load-balancer/index.ts`  
+# Ubuntu Apache Webserver
+* Shows how to create instance with Ubuntu AMI and Apache webserver
+* Shows how to user userdata to download and install apache and stress utility
 * See how to use it to lookup AMI `https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-ec2.LookupMachineImage.html` check example `https://docs.aws.amazon.com/cdk/api/latest/docs/aws-ec2-readme.html`
 * Find AMI `https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html`
 
@@ -26,4 +27,8 @@ change for windows
 
 It returns
 `ami-056db1277deef2218`
+
+# Autoscaling Group
+* This is based on `https://levelup.gitconnected.com/implementing-and-testing-aws-ec2-auto-scaling-13db17be1161` and `https://github.com/aws-samples/aws-cdk-examples/blob/master/typescript/application-load-balancer/index.ts`  
+
 * shows how to test it by using stress utility. Run `stress -c 50` to do it.
