@@ -94,6 +94,17 @@ export class CdkBastionStack extends cdk.Stack {
         securityGroup:webserverSecurityGroup,
         vpcSubnets:subnetSelection
       })
-    
+
+      /**
+       *       
+       * https://github.com/aws-samples/aws-cdk-examples/blob/c985b879fbed067e615af9c7ee257ef54d939c14/python/ec2-cloudwatch/ec2_cloudwatch/ec2_cloudwatch_stack.py
+
+      *  https://docs.aws.amazon.com/cdk/api/latest/docs/aws-ec2-readme.html
+      https://github.com/aqilzeeshan/cdk-ec2-vpc-subnet/blob/master/lib/cdkexp-stack.ts
+      https://github.com/aqilzeeshan/cdk_bastion_host
+      https://mechanicalrock.github.io/2020/07/20/private-bastions.html
+      https://docs.aws.amazon.com/cdk/api/latest/docs/aws-backup-readme.html
+       */
+
   }
 }
